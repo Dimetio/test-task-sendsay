@@ -1,0 +1,14 @@
+.numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.number__item {
+  width: 7.2rem;
+}
+
+.number__item:nth-child(10) {
+  flex-grow: 1;
+}
