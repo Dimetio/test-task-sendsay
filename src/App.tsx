@@ -59,9 +59,31 @@ function App() {
     }
   };
 
+  const dropCanvasHandler = (e: DragEvent<HTMLDivElement>, item: Item) => {
+    if (!currentItem) {
+      return;
+    }
+
+    const currentItemId = canvasItems.indexOf(currentItem);
+    const itemId = canvasItems.indexOf(item);
+
+    return canvasItems.splice(
+      itemId,
+      0,
+      canvasItems.splice(currentItemId, 1)[0]
+    );
+  };
+
   const canvasTemplate = (item: Item) => {
     return (
-      <div className="wrapper" key={item.name}>
+      <div
+        className="wrapper"
+        key={item.name}
+        onDragStart={(e) => dragStartHandler(e, item)}
+        onDragEnd={(e) => dragEndHandler(e)}
+        onDrop={(e) => dropCanvasHandler(e, item)}
+        draggable={true}
+      >
         {item.element}
       </div>
     );
