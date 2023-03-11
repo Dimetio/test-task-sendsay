@@ -12,11 +12,24 @@
   gap: 5.6rem;
 }
 
+.constructor {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 24rem;
+  min-height: 44.8rem;
+  margin-top: 6.8rem;
+}
+
 .wrapper {
   border-radius: 0.4rem;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.06),
     0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   padding: 0.4rem;
+}
+
+.blocked {
+  opacity: 0.5;
 }
 
 .button {
@@ -33,4 +46,22 @@
 .button:hover {
   border: 2px solid #5d5fef;
   cursor: pointer;
+}
+
+.canvas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24.3rem;
+}
+
+.canvas__container {
+  display: flex;
+  flex-direction: column;
+  height: 448px;
+  padding: 1px;
+}
+
+.canvas__container-hover {
+  background-color: #f0f9fe;
 }
