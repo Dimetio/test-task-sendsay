@@ -183,6 +183,14 @@ function App() {
             ) : (
               <CanvasEmpty />
             )}
+
+            {canvasItems.length > 0 &&
+            canvasItems.length < items.length &&
+            moveEl ? (
+              <div className="line"></div>
+            ) : (
+              ""
+            )}
           </div>
         </section>
       </main>
