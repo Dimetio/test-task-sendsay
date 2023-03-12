@@ -21,6 +21,8 @@ function App() {
     { element: <CalculateButton />, name: "calculateButton", blocked: false },
   ]);
 
+  const noDraggbleEl = "display";
+
   const [canvasItems, setCanvasItems] = useState<Item[]>([]);
   const [moveEl, setMoveEl] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<Item | null>(null);
@@ -82,8 +84,16 @@ function App() {
         onDragStart={(e) => dragStartHandler(e, item)}
         onDragEnd={(e) => dragEndHandler(e)}
         onDrop={(e) => dropCanvasHandler(e, item)}
-        draggable={true}
+        draggable={item.name !== noDraggbleEl}
       >
+        {item.element}
+      </div>
+    );
+  };
+
+  const canvasBlockedTemplate = (item: Item) => {
+    return (
+      <div className="wrapper" key={item.name}>
         {item.element}
       </div>
     );
@@ -112,7 +122,7 @@ function App() {
 
           <div
             className={
-              moveEl
+              moveEl && canvasItems.length === 0
                 ? "canvas__container canvas__container-hover"
                 : "canvas__container"
             }
@@ -121,7 +131,11 @@ function App() {
             onDragLeave={(e) => dragEndHandler(e)}
           >
             {canvasItems.length > 0 ? (
-              canvasItems.map((item) => canvasTemplate(item))
+              canvasItems.map((item) =>
+                item.name === noDraggbleEl
+                  ? canvasBlockedTemplate(item)
+                  : canvasTemplate(item)
+              )
             ) : (
               <CanvasEmpty />
             )}
