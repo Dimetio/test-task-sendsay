@@ -1,4 +1,4 @@
-import { useState, DragEvent } from "react";
+import { useState, DragEvent, MouseEvent } from "react";
 import "./App.css";
 import CalculateButton from "./components/constructor/calculate-button/calculate-button";
 import Display from "./components/constructor/display/display";
@@ -36,6 +36,27 @@ function App() {
         item.name === currentItemName ? { ...item, blocked: true } : item
       )
     );
+  };
+
+  const unblockedElement = (currentItemName: string) => {
+    setItems(
+      items.map((item) =>
+        item.name === currentItemName ? { ...item, blocked: false } : item
+      )
+    );
+  };
+
+  const removeElement = (arr: Item[], elementName: string) => {
+    return arr.filter((item) => item.name !== elementName);
+  };
+
+  const doubleClick = (e: MouseEvent<HTMLDivElement>, item: Item) => {
+    console.log("click");
+    const newCanvasItems = removeElement(canvasItems, item.name);
+
+    setCanvasItems(newCanvasItems);
+
+    unblockedElement(item.name);
   };
 
   const dragStartHandler = (e: DragEvent<HTMLDivElement>, item: Item) => {
@@ -99,6 +120,7 @@ function App() {
         onDragEnd={(e) => dragEndHandler(e)}
         onDrop={(e) => dropCanvasHandler(e, item)}
         draggable={item.name !== noDraggbleEl}
+        onDoubleClick={(e) => doubleClick(e, item)}
       >
         {item.element}
       </div>
@@ -107,7 +129,11 @@ function App() {
 
   const canvasBlockedTemplate = (item: Item) => {
     return (
-      <div className="wrapper" key={item.name}>
+      <div
+        className="wrapper"
+        key={item.name}
+        onDoubleClick={(e) => doubleClick(e, item)}
+      >
         {item.element}
       </div>
     );
