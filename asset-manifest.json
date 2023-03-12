@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Dimetio/test-task-sendsay/static/css/main.ec3a959c.css",
+    "main.js": "/Dimetio/test-task-sendsay/static/js/main.4c10ad5f.js",
+    "static/js/787.85bb9051.chunk.js": "/Dimetio/test-task-sendsay/static/js/787.85bb9051.chunk.js",
+    "index.html": "/Dimetio/test-task-sendsay/index.html",
+    "main.ec3a959c.css.map": "/Dimetio/test-task-sendsay/static/css/main.ec3a959c.css.map",
+    "main.4c10ad5f.js.map": "/Dimetio/test-task-sendsay/static/js/main.4c10ad5f.js.map",
+    "787.85bb9051.chunk.js.map": "/Dimetio/test-task-sendsay/static/js/787.85bb9051.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec3a959c.css",
+    "static/js/main.4c10ad5f.js"
+  ]
+}
