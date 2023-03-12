@@ -30,6 +30,14 @@ function App() {
 
   const currentMode = useAppSelector((store) => store.calculator.mode);
 
+  const blockedElement = (currentItemName: string) => {
+    setItems(
+      items.map((item) =>
+        item.name === currentItemName ? { ...item, blocked: true } : item
+      )
+    );
+  };
+
   const dragStartHandler = (e: DragEvent<HTMLDivElement>, item: Item) => {
     setCurrentItem(item);
   };
@@ -52,6 +60,7 @@ function App() {
 
     if (canvasItems.length === 0) {
       setCanvasItems([currentItem]);
+      blockedElement(currentItem.name);
       return;
     }
 
@@ -61,6 +70,8 @@ function App() {
 
     if (duplicate === undefined) {
       setCanvasItems((items) => [...items, currentItem]);
+
+      blockedElement(currentItem.name);
     }
   };
 
