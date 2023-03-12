@@ -90,7 +90,10 @@ function App() {
     );
 
     if (duplicate === undefined) {
-      setCanvasItems((items) => [...items, currentItem]);
+      /* если это дисплей, то помещать его всегда первым */
+      currentItem.name === noDraggbleEl
+        ? setCanvasItems((items) => [currentItem, ...items])
+        : setCanvasItems((items) => [...items, currentItem]);
 
       blockedElement(currentItem.name);
     }
