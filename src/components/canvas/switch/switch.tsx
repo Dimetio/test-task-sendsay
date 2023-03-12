@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { changeMode } from "../../../app/reducers/calculatorSlice";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { changeMode } from "../../../store/reducers/calculatorSlice";
 import styles from "./switch.module.css";
 
 export default function Switch() {

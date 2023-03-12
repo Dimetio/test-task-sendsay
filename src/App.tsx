@@ -6,7 +6,7 @@ import Numbers from "./components/constructor/numbers/numbers";
 import Operators from "./components/constructor/operators/operators";
 import Switch from "./components/canvas/switch/switch";
 import CanvasEmpty from "./components/canvas/canvas-empty/canvas-empty";
-import { useAppSelector } from "./app/hooks";
+import { useAppSelector } from "./store/hooks";
 
 type Item = {
   element: JSX.Element;
@@ -176,9 +176,9 @@ function App() {
           >
             {canvasItems.length > 0 ? (
               canvasItems.map((item) =>
-                item.name === noDraggbleEl
-                  ? canvasBlockedTemplate(item)
-                  : canvasTemplate(item)
+                item.name !== noDraggbleEl && currentMode === "constructor"
+                  ? canvasTemplate(item)
+                  : canvasBlockedTemplate(item)
               )
             ) : (
               <CanvasEmpty />

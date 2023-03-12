@@ -1,4 +1,4 @@
-import { useAppSelector } from "../../../app/hooks";
+import { useAppSelector } from "../../../store/hooks";
 import styles from "./canvas-empty.module.css";
 
 export default function CanvasEmpty() {
