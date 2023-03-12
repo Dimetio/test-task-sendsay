@@ -1,9 +1,29 @@
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { changeMode } from "../../../app/reducers/calculatorSlice";
 import styles from "./switch.module.css";
 
 export default function Switch() {
+  const currentMode = useAppSelector((store) => store.calculator.mode);
+
+  const dispatch = useAppDispatch();
+
+  const activeClassName = (mode: string, currentMode: string) => {
+    return mode === currentMode
+      ? `${styles["switch-button"]} ${styles["switch-button-active"]}`
+      : styles["switch-button"];
+  };
+
+  const svgColor = (mode: string, currentMode: string) => {
+    return mode === currentMode ? "#5D5FEF" : "#4D5562";
+  };
+
   return (
     <div className={styles.switch}>
-      <button type="button" className={`${styles["switch-button"]} button`}>
+      <button
+        type="button"
+        className={activeClassName("runtime", currentMode)}
+        onClick={() => dispatch(changeMode("runtime"))}
+      >
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,14 +32,14 @@ export default function Switch() {
             fill="none"
           >
             <path
-              stroke="#4D5562"
+              stroke={svgColor("runtime", currentMode)}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
               d="M11.768 11.768A2.5 2.5 0 1 0 8.23 8.232a2.5 2.5 0 0 0 3.537 3.536Z"
             />
             <path
-              stroke="#4D5562"
+              stroke={svgColor("runtime", currentMode)}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
@@ -31,7 +51,8 @@ export default function Switch() {
       </button>
       <button
         type="button"
-        className={`${styles["switch-button"]} ${styles["switch-button-active"]} button`}
+        className={activeClassName("constructor", currentMode)}
+        onClick={() => dispatch(changeMode("constructor"))}
       >
         <span>
           <svg
@@ -41,7 +62,7 @@ export default function Switch() {
             fill="none"
           >
             <path
-              stroke="#5D5FEF"
+              stroke={svgColor("constructor", currentMode)}
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"

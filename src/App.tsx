@@ -6,6 +6,7 @@ import Numbers from "./components/constructor/numbers/numbers";
 import Operators from "./components/constructor/operators/operators";
 import Switch from "./components/canvas/switch/switch";
 import CanvasEmpty from "./components/canvas/canvas-empty/canvas-empty";
+import { useAppSelector } from "./app/hooks";
 
 type Item = {
   element: JSX.Element;
@@ -26,6 +27,8 @@ function App() {
   const [canvasItems, setCanvasItems] = useState<Item[]>([]);
   const [moveEl, setMoveEl] = useState<boolean>(false);
   const [currentItem, setCurrentItem] = useState<Item | null>(null);
+
+  const currentMode = useAppSelector((store) => store.calculator.mode);
 
   const dragStartHandler = (e: DragEvent<HTMLDivElement>, item: Item) => {
     setCurrentItem(item);
@@ -102,7 +105,11 @@ function App() {
   return (
     <div className="App">
       <main className="main">
-        <div className="constructor">
+        <div
+          className={
+            currentMode === "constructor" ? "constructor" : "constructor hidden"
+          }
+        >
           {items.map((item, index) => {
             return (
               <div

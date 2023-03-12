@@ -16,7 +16,13 @@
   width: 100%;
   height: 100%;
   border: 2px solid transparent;
+  border-radius: 0.6rem;
   background-color: transparent;
+}
+
+.switch-button:hover {
+  border: 2px solid #5d5fef;
+  cursor: pointer;
 }
 
 .switch-button-active {
