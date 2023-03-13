@@ -1,3 +1,5 @@
+export const MAX_SYMBOLS = 12;
+
 export const symbols = [
   { symbol: "7" },
   { symbol: "8" },

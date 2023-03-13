@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { correctResult } from "../../utils";
 
 type State = {
   mode: string;
@@ -69,7 +70,7 @@ export const modeSlice = createSlice({
        * после выполнения уже будет string
        */
 
-      state.result = result.toFixed(7);
+      state.result = correctResult(result);
 
       state.numberOne = "";
       state.numberTwo = "";

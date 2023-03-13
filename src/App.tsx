@@ -51,7 +51,6 @@ function App() {
   };
 
   const doubleClick = (e: MouseEvent<HTMLDivElement>, item: Item) => {
-    console.log("click");
     const newCanvasItems = removeElement(canvasItems, item.name);
 
     setCanvasItems(newCanvasItems);
@@ -191,9 +190,7 @@ function App() {
             canvasItems.length < items.length &&
             moveEl ? (
               <div className="line"></div>
-            ) : (
-              ""
-            )}
+            ) : null}
           </div>
         </section>
       </main>

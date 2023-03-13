@@ -20,9 +20,20 @@ export default function Display(): JSX.Element {
     return numberTwo;
   };
 
+  /* на 0 делить нельзя */
+  const resultInfinity = (value: string) => {
+    if (Number(value) === Infinity) {
+      return "Не определено";
+    }
+
+    return value;
+  };
+
   return (
     <div className={styles.display}>
-      <span className={styles.display__value}>{currentValue()}</span>
+      <span className={styles.display__value}>
+        {resultInfinity(currentValue())}
+      </span>
     </div>
   );
 }

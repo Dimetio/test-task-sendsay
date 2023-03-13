@@ -10,8 +10,8 @@
 }
 
 .display__value {
+  font-size: 2.4rem;
   color: #111827;
-  font-size: 3.6rem;
   line-height: 4.4rem;
   font-weight: 800;
 }
