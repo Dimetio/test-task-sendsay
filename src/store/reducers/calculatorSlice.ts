@@ -65,7 +65,11 @@ export const modeSlice = createSlice({
           break;
       }
 
-      state.result = result.toString();
+      /* округляю до заданного число после запятой
+       * после выполнения уже будет string
+       */
+
+      state.result = result.toFixed(7);
 
       state.numberOne = "";
       state.numberTwo = "";
